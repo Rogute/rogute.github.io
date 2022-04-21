@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+        crossorigin=""></script>
+    <style>
+        #map {
+            /*height: 180px;*/
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([52.018, 19.137], 7);
+
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'your.mapbox.access.token'
+        }).addTo(map);
+
+        var leafletIcon = L.icon({
+            iconUrl: 'https://lh3.googleusercontent.com/cf62_BUsLQa5hWV6AH1mRquSqKIa41gGb7CnStciLCMyVlAT37lNAdqqHv5ojbquwWK2sSj93dv_4-tT3ilwp3t1xwfnIn08ZcKRQ_wR9BZE8RuGvwf0ZXmUib0SP8vIN7BDeNLq_A=s150',
+            iconSize: [40, 40], // size of the icon
+            // shadowSize: [50, 64], // size of the shadow
+            iconAnchor: [0, 0], // point of the icon which will correspond to marker's location
+            // shadowAnchor: [4, 62],  // the same for the shadow
+            popupAnchor: [40, 0] // point from which the popup should open relative to the iconAnchor
+        })
+
+        L.marker([51.12227, 17.03119], { icon: leafletIcon }).addTo(map).bindPopup("Daniel Ostrowski");
+        L.marker([51.108, 17.04041], {icon: L.icon({
+            iconUrl: 'https://lh3.googleusercontent.com/4V8QoxLHOW_uWBTpb7jGu4cXpEQeIC18wZFy1H5i5rdznhS8BwHKuQNDewEGk-nCxCaLqnnb0N8BxB76B5f2e5oSD4mbLBbcZnDgzyLA1PlSrLzmHUW0OwAgAeJ2xqeZKxGdRv6vMA=s150', 
+            iconSize: [40, 40],
+            iconAnchor: [0, 0],
+            popupAnchor: [40, 0]})}).addTo(map).bindPopup("Gabriela Fibor");
+
+    </script>
+</body>
+
+</html>
